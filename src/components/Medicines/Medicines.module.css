@@ -1,0 +1,33 @@
+.medicines_table {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.table_header,
+.medicine {
+  display: grid;
+  grid-template-columns: 1fr 4fr repeat(3, 1fr);
+}
+
+.table_header {
+  background-color: black;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+}
+
+.medicines_table button {
+  padding: 10px;
+  border: none;
+  background-color: black;
+  color: black;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+.medicines_table button:disabled {
+  background-color: gray;
+  cursor: not-allowed;
+}

@@ -1,0 +1,14 @@
+.container {
+  width: 95%;
+  margin: auto;
+  background-color: rgb(229, 229, 229);
+  border-radius: 5px;
+  padding: 30px;
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  gap: 15px;
+}
+
+.medicines {
+  grid-column: span 2;
+}

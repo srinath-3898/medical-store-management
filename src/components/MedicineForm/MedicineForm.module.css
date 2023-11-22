@@ -1,0 +1,40 @@
+.medicine_form {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  place-items: center;
+}
+
+.input_controller {
+  display: grid;
+  grid-template-columns: 1fr 10fr;
+  gap: 15px;
+  align-items: center;
+}
+
+.input_controller input,
+.input_controller textarea {
+  padding: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  outline: none;
+}
+
+.input_controller textarea {
+  resize: none;
+  font-family: sans-serif;
+}
+
+.medicine_form button {
+  padding: 10px;
+  border: none;
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  width: 150px;
+  cursor: pointer;
+}
+
+.description {
+  grid-column: 1 / span 2;
+}
