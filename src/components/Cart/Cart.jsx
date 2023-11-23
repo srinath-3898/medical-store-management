@@ -7,15 +7,16 @@ import { MedicineContext } from "@/store/medicine/MedicineContext";
 const Cart = () => {
   const { items, addItem, removeItem } = useContext(CartContext);
   const { addMedicine, removeMedicine } = useContext(MedicineContext);
+  console.log(items);
   return (
     <div className={styles.cart}>
       <p>Cart</p>
-
       {items.map((item) => (
         <div key={item?.id} className={styles.medicine}>
           <p>{item?.name}</p>
           <p>X {item.quantity}</p>
           <button
+            disabled={item.remainingQuantity === 0}
             onClick={() => {
               addItem(item);
               removeMedicine(item);
@@ -26,7 +27,7 @@ const Cart = () => {
           <button
             onClick={() => {
               removeItem(item);
-              addMedicine(medicine);
+              addMedicine(item);
             }}
           >
             -

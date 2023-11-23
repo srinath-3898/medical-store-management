@@ -19,3 +19,8 @@
   border-radius: 5px;
   font-size: 20px;
 }
+
+.medicine button:disabled {
+  color: gray;
+  cursor: not-allowed;
+}

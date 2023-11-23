@@ -13,30 +13,42 @@ const CartContextProvider = ({ children }) => {
       setItems((prevState) => {
         return prevState?.map((item, i) => {
           if (i === alreadyPresentItemIndex) {
-            return { ...item, quantity: item.quantity + 1 };
+            return {
+              ...item,
+              quantity: item.quantity + 1,
+              remainingQuantity: item?.remainingQuantity - 1,
+            };
           } else {
             return item;
           }
         });
       });
     } else {
-      setItems((prevState) => [...prevState, { ...item, quantity: 1 }]);
+      setItems((prevState) => [
+        ...prevState,
+        { ...item, remainingQuantity: item?.quantity - 1, quantity: 1 },
+      ]);
     }
   };
 
-  const removeItem = (id, quantity) => {
-    if (quantity === 1) {
-      setItems((prevState) => prevState.filter((item) => item.id !== id));
+  const removeItem = (item) => {
+    if (item.quantity === 1) {
+      setItems((prevState) => prevState.filter((i) => i.id !== item?.id));
+    } else {
+      setItems((prevState) =>
+        prevState.map((i) => {
+          if (i.id === item.id) {
+            return {
+              ...i,
+              quantity: i.quantity - 1,
+              remainingQuantity: i.remainingQuantity + 1,
+            };
+          } else {
+            return i;
+          }
+        })
+      );
     }
-    setItems((prevState) =>
-      prevState.map((item) => {
-        if (item.id === id) {
-          return { ...item, quantity: quantity - 1 };
-        } else {
-          return item;
-        }
-      })
-    );
   };
 
   return (
